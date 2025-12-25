@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-    id("com.google.dagger.hilt.android") version "2.51.1" apply false
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -56,5 +56,6 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.activity.ktx)
 
 }
