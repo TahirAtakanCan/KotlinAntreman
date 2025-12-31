@@ -1,5 +1,6 @@
 package com.tahiratakancan.movieapp.ui.fragment
 
+import androidx.navigation.fragment.findNavController
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tahiratakancan.movieapp.R
+import com.tahiratakancan.movieapp.databinding.FragmentHomeViewBinding
+import com.tahiratakancan.movieapp.ui.adapter.MoviesAdapter
 import com.tahiratakancan.movieapp.ui.viewmodel.HomeViewModel
-import com.tahiratakancan.movieapp.R // DÜZELTİLDİ: Senin R dosyan
-import com.tahiratakancan.movieapp.databinding.FragmentHomeViewBinding // DÜZELTİLDİ
-import com.tahiratakancan.movieapp.ui.adapter.MoviesAdapter // DÜZELTİLDİ
-import com.tahiratakancan.movieapp.util.Resource // DÜZELTİLDİ
+import com.tahiratakancan.movieapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,7 +36,20 @@ class HomeViewFragment : Fragment(R.layout.fragment_home_view) {
 
     private fun setupRecyclerView() {
         moviesAdapter = MoviesAdapter { movie ->
-            Toast.makeText(context, "${movie.title} tıklandı", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "${movie.title} tıklandı", Toast.LENGTH_SHORT).show()
+
+            // 2. Veriyi paketle (Bundle)
+            val bundle = Bundle().apply {
+                putParcelable("movie", movie)
+            }
+
+            // 3. Navigasyon işlemini başlat (Git emri)
+            // Bu kısım EKSİK olduğu için sayfa değişmiyordu. Düzelttim.
+            try {
+                findNavController().navigate(R.id.action_home_to_detail, bundle)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
         binding.rvMovies.apply {
