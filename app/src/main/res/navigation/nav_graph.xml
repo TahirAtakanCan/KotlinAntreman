@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_home_to_detail"
             app:destination="@id/detailFragment" />
+
+        <action
+            android:id="@+id/action_home_to_favorites"
+            app:destination="@id/favoritesFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +27,16 @@
         <argument
             android:name="movie"
             app:argType="com.tahiratakancan.movieapp.data.model.Movie" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.tahiratakancan.movieapp.ui.fragment.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites">
+
+        <action
+            android:id="@+id/action_favorites_to_detail"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

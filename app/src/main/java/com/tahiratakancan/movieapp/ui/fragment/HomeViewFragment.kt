@@ -32,6 +32,11 @@ class HomeViewFragment : Fragment(R.layout.fragment_home_view) {
 
         setupRecyclerView()
         observeData()
+
+        // YENİ EKLENEN: Favorilere Git Butonu
+        binding.fabGoToFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_favorites)
+        }
     }
 
     private fun setupRecyclerView() {
