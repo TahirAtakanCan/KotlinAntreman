@@ -1,11 +1,15 @@
 package com.tahiratakancan.movieapp.data.model
 
-import com.google.gson.annotations.SerializedName
 import android.os.Parcelable
+import androidx.room.Entity // EKLENDİ
+import androidx.room.PrimaryKey // EKLENDİ
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Movie (
+@Entity(tableName = "movies") // Bu sınıf artık "movies" adında bir tablo!
+data class Movie(
+    @PrimaryKey // ID'ler benzersiz olduğu için PrimaryKey yaptık
     val id: Int,
     val title: String,
     val overview: String,
